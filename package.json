@@ -4,16 +4,16 @@
   "description": "",
   "scripts": {
     "postinstall": "tsd reinstall --overwrite --save",
-    "start": "webpack-dev-server --port 888"
+    "start": "webpack-dev-server --port 6767"
   },
   "author": "Pablo Núñez",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.5",
     "jquery": "^2.1.4",
-    "office-ui-fabric-react": "^0.22.1",
+    "office-ui-fabric-react": "^0.27.0",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react-dom": "^15.1.0"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",

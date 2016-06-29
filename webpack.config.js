@@ -24,6 +24,15 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  externals: [
+    {
+      'react': 'React'
+    },
+    {
+      'react-dom': 'ReactDOM'
+    },
+  ],
+
   //https://webpack.github.io/docs/webpack-dev-server.html#webpack-dev-server-cli
   devServer: {
     contentBase: './dist', //Content base

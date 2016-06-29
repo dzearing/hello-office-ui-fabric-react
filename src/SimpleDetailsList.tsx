@@ -1,21 +1,23 @@
 import * as React from 'react';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import {
+  ContextualMenu,
+  DirectionalHint,
+  IContextualMenuItem,
+  IContextualMenuProps
+} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   ColumnActionsMode,
-  CommandBar,
   ConstrainMode,
-  ContextualMenu,
   DetailsList,
   DetailsListLayoutMode as LayoutMode,
-  DirectionalHint,
   IColumn,
-  IContextualMenuItem,
-  IContextualMenuProps,
-  Link,
-  TextField,
-  Toggle,
   buildColumns
-} from 'office-ui-fabric-react';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/interfaces';
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 
 const PAGING_SIZE = 1000;
 const PAGING_DELAY = 5000;
@@ -87,16 +89,16 @@ export class SimpleDetailsList extends React.Component<any, IDetailsListBasicExa
     return (
       <div className='ms-DetailsListBasicExample'>
         <Toggle
-          isToggled={ isGridVisible }
+          checked={ isGridVisible }
           onChanged={ isToggled => this.setState({ isGridVisible: isToggled }) }
           label='Grid visible'
           onText='On'
-          offText='Off' 
+          offText='Off'
           />
 
         <CommandBar items={ this._getCommandItems() } />
 
-        <div style={ isGridVisible ? null : { display: "none" } }>
+        { isGridVisible && (
           <DetailsList
             setKey='items'
             items={ items }
@@ -113,7 +115,7 @@ export class SimpleDetailsList extends React.Component<any, IDetailsListBasicExa
               return null;
             } }
             />
-          </div>
+        ) }
 
         { contextualMenuProps && (
           <ContextualMenu { ...contextualMenuProps } />
@@ -363,7 +365,7 @@ export class SimpleDetailsList extends React.Component<any, IDetailsListBasicExa
     isSortedDescending?: boolean): IColumn[] {
 
     return [
-      { 
+      {
         fieldName: "name",
         key: "name",
         name: "Name",
@@ -403,7 +405,7 @@ export class SimpleDetailsList extends React.Component<any, IDetailsListBasicExa
 
   private createListItems(count: number) {
     const result = [];
-    
+
     for (var index = 0; index < count; index++) {
       result.push(this.createItem(index));
     }
